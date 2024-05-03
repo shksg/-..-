@@ -1,0 +1,34 @@
+import logging
+from telegram.ext import Updater, CommandHandler
+def start(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="مرحبًا! أنا بوت الموسيقى.")
+def play(update, context):
+    # قم بتنفيذ الأكواد اللازمة لتشغيل الأغنية
+    pass
+def stop(update, context):
+    # قم بتنفيذ الأكواد اللازمة لإيقاف تشغيل الأغنية
+    pass
+def skip(update, context):
+    # قم بتنفيذ الأكواد اللازمة لتخطي الأغنية الحالية وتشغيل الأغنية التالية
+    pass
+def queue(update, context):
+    # قم بتنفيذ الأكواد اللازمة لعرض قائمة التشغيل (قائمة الأغاني المقبلة)
+    pass
+def main():
+    updater = Updater(token='6930640872:AAEdIsMOREzuO-OrRUXs1CLSL7oiFejU_0s', use_context=True)
+    dispatcher = updater.dispatcher
+
+    # قم بتسجيل المعالجات لكل أمر
+    dispatcher.add_handler(CommandHandler('start', start))
+    dispatcher.add_handler(CommandHandler('play', play))
+    dispatcher.add_handler(CommandHandler('stop', stop))
+    dispatcher.add_handler(CommandHandler('skip', skip))
+    dispatcher.add_handler(CommandHandler('queue', queue))
+
+    # قم ببدء تشغيل البوت
+    updater.start_polling()
+    updater.idle()
+
+if __name__ == '__main__':
+    main()
+
